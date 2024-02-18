@@ -6,6 +6,26 @@ use std::process::Command;
 use term_table::{row, row::Row,  table_cell::*};
 use term_table::{Table, TableStyle, TableBuilder};
 
+struct Color(i32, i32, i32);
+
+struct CalendarDay {
+    date: i32,
+    note: String,
+    color: Color,
+}
+
+fn build_day(
+    date: i32,
+    note: String,
+) -> CalendarDay{
+    let mut color = Color(255,255,255);
+    CalendarDay{
+        date: date,
+        note: note,
+        color: color,
+    }  
+}
+
 fn main() {
     //println!("{}","Hello, world!".blue());
     let mut py_bind = Command::new("python");
